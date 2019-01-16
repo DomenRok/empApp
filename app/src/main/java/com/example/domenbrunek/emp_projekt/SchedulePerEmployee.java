@@ -93,12 +93,12 @@ public class SchedulePerEmployee extends AppCompatActivity {
     public void izpis() {
         LinearLayout layout = findViewById(R.id.linearLayout3);
 
-        for (String date:dates) {
+        for (String date : dates) {
             final TextView textView = new TextView(this);
-            String string = date;
             textView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            textView.setText(string);
-            textView.setBackgroundColor(Color.parseColor("#FFFFFF00"));
+            textView.setText(date);
+            textView.setTextSize(25);
+            textView.setPadding(20,20,20,0);
             layout.addView(textView);
         }
     }

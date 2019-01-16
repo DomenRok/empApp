@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -60,8 +61,8 @@ public class DisplayMessageActivity extends AppCompatActivity  {
         LinearLayout layout = findViewById(R.id.linearLayout);
 
         for (Lokal lokal: lokali) {
-            final TextView textView = new TextView(this);
-            String string = lokal.getName() + " " + lokal.getDesc() + " " + lokal.getLocation();
+            final Button textView = new Button(this);
+            String string = lokal.getName() + " (" + lokal.getDesc() + " " + lokal.getLocation() + ")";
             textView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             textView.setText(string);
             textView.setTag(lokal.getId());
@@ -69,7 +70,7 @@ public class DisplayMessageActivity extends AppCompatActivity  {
                 @Override
                 public void onClick(View v) {
                     Log.d("text", textView.getText().toString());
-                    Integer establishmentId = (int) textView.getTag();
+                    int establishmentId = (int) textView.getTag();
                     Bundle bundle = new Bundle();
                     bundle.putString("token", token);
                     bundle.putInt("establishmentId", establishmentId);

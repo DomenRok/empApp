@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -101,11 +102,11 @@ public class EmployeePerEstablishment extends AppCompatActivity {
         LinearLayout layout = findViewById(R.id.linearLayout2);
 
         for (Zaposlen zaposlen: zaposleni) {
-            final TextView textView = new TextView(this);
-            String string = zaposlen.getName() + " " + zaposlen.getSurname() + " " + zaposlen.getEmail();
+            final Button textView = new Button(this);
+            String string = zaposlen.getName() + " " + zaposlen.getSurname() + " (" + zaposlen.getEmail() + ")";
             textView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             textView.setText(string);
-            textView.setBackgroundColor(Color.parseColor("#FFFFFF00"));
+            //textView.setBackgroundColor(Color.parseColor("#FFFFFF00"));
             textView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
