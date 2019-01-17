@@ -118,10 +118,6 @@ public class DisplayMessageActivity extends AppCompatActivity  {
         requestQueue.add(getRequest);
     }
 
-
-
-
-
     public void getEstablishmentsWithHeaders() {
         final JsonArrayRequest request = new JsonArrayRequest(
                 establishmentsUrl,

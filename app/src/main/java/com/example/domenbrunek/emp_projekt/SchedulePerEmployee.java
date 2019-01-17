@@ -28,7 +28,9 @@ import java.util.Map;
 
 public class SchedulePerEmployee extends AppCompatActivity {
     String token;
-    String url = "https://planitapp.azurewebsites.net/api/UsersApi/GetSchedulePerUser/id_user";
+    String url;
+    int establishementId;
+    String userId;
     RequestQueue requestQueue;
     ArrayList<String> dates;
 
@@ -44,7 +46,10 @@ public class SchedulePerEmployee extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         token = bundle.getString("token");
+        establishementId = bundle.getInt("establishmentId");
+        userId = bundle.getString("userId");
         requestQueue = Volley.newRequestQueue(this);
+        url = "https://planitapp.azurewebsites.net/api/UsersApi/GetSchedulePerUser/" + userId;
         dates = new ArrayList<>();
         makeRequest();
     }

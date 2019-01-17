@@ -5,6 +5,8 @@
     <string name="userName">Username</string>
     <string name="password">Password</string>
     <string name="Lokali">Pregled Lokalov</string>
+    <string name="naslovZap">Zaposleni</string>
+    <string name="naslovUrnik">Urnik</string>
     <string name="Email">Email</string>
     <string name="gmailPlaceholder">tester@gmail.com</string>
     <string name="passwordPlaceholder">tester</string>

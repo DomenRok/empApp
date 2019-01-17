@@ -66,8 +66,12 @@ public class EmployeePerEstablishment extends AppCompatActivity {
                             try {
                                 JSONObject obj = response.getJSONObject(i);
                                 JSONObject userInfo= obj.getJSONObject("User");
-                                Zaposlen zaposlen = new Zaposlen(userInfo.getString("Name"), userInfo.getString("Surname"),
-                                                                userInfo.getString("Email"));
+                                Zaposlen zaposlen = new Zaposlen(
+                                        userInfo.getString("Id"),
+                                        userInfo.getString("Name"),
+                                        userInfo.getString("Surname"),
+                                        userInfo.getString("Email")
+                                );
                                 zaposleni.add(zaposlen);
 
                             } catch (JSONException e) {
@@ -101,18 +105,18 @@ public class EmployeePerEstablishment extends AppCompatActivity {
     public void izpis() {
         LinearLayout layout = findViewById(R.id.linearLayout2);
 
-        for (Zaposlen zaposlen: zaposleni) {
+        for (final Zaposlen zaposlen: zaposleni) {
             final Button textView = new Button(this);
             String string = zaposlen.getName() + " " + zaposlen.getSurname() + " (" + zaposlen.getEmail() + ")";
             textView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             textView.setText(string);
-            //textView.setBackgroundColor(Color.parseColor("#FFFFFF00"));
             textView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Log.d("text", textView.getText().toString());
                     Bundle bundle = new Bundle();
                     bundle.putString("token", token);
+                    bundle.putString("userId", zaposlen.getUserId());
                     newIntent.putExtras(bundle);
 
                      startActivity(newIntent);
@@ -126,22 +130,26 @@ public class EmployeePerEstablishment extends AppCompatActivity {
 
 
 class Zaposlen {
+    private String userId;
     private String name;
     private String surname;
     private String email;
 
-    public Zaposlen(String name, String surname, String email) {
+    public Zaposlen(String userId, String name, String surname, String email) {
+        this.setUserId(userId);
         this.setName(name);
         this.setSurname(surname);
         this.setEmail(email);
     }
 
 
+    public String getUserId() { return  userId; }
+
+    public void setUserId(String userId) { this.userId = userId; }
+
     public String getName() {
         return name;
     }
-
-
 
     public void setName(String name) {
         this.name = name;
